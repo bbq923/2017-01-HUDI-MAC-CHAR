@@ -38,10 +38,10 @@ body {
 }
  
 .input_form .field input:focus {
-  outlines: none;
+  outline: none;
   color: #ebf0f0;
 }
- 
+
 .input_form .field.with_btn {
   width: 200px;
   display: inline-block;
