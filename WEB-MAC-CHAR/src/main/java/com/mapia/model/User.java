@@ -24,7 +24,7 @@ public class User {
 		this.password = password;
 	}
 	
-//	public User(){} // default constructor
+	public User(){} // default constructor
 	
 	public String getUserId() {
 		return id;
