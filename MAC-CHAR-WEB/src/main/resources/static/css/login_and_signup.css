@@ -76,7 +76,7 @@ body {
 .input_form button:active {
   background: linear-gradient(#545e61, #545a5e);
 }
- 
+
 .message {
   clear: both;
   font-family: Helvetica Neue;
