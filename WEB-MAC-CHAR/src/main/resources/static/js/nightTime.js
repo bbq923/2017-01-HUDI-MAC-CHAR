@@ -50,8 +50,11 @@ export default class nightTime {
         	this.voteSocket.sendVoteResult(this.userName, victim, "night");
         }
         if (this.role === "Police") {
-        	this.voteSocket.sendVoteResult(this.userName, victim, "night");
+        	this.voteSocket.sendVoteResult(this.userName, "undefined", "night");
         	this.investSocket.sendInvest(victim);
+        }
+        if (this.role === "Citizen") {
+        	this.voteSocket.sendVoteResult(this.userName, "undefined", "night");
         }
         this.slot_box.removeEventListener("click", this.voteFunction);
         printMessage("경기 결과를 처리 중입니다");

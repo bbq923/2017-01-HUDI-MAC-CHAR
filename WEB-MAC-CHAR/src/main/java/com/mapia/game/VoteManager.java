@@ -97,7 +97,6 @@ public class VoteManager {
     private Map<Player, Integer> countVoteOfMafia() {
         Map<Player, Integer> countStatusOfMafia = new HashMap<>();
         voteStatus.keySet().stream()
-//            .filter(player -> player.isMafia())
             .forEach(player -> countStatusOfMafia.put(player, 0));
         voteStatus.keySet().stream()
             .filter(player -> player.isMafia())
@@ -113,7 +112,6 @@ public class VoteManager {
     private Map<Player, Integer> countVoteOfDoctor() {
         Map<Player, Integer> countStatusOfDoctor = new HashMap<>();
         voteStatus.keySet().stream()
-//            .filter(player -> player.isDoctor())
             .forEach(player -> countStatusOfDoctor.put(player, 0));
         voteStatus.keySet().stream()
             .filter(player -> player.isDoctor())
