@@ -180,6 +180,10 @@ public class VoteManager {
                 return mafiaSelectPlayer.getUser().getNickname();
             }
             return "";
+        } else if (mafiaSelectPlayer != null) {
+            mafiaSelectPlayer.kill();
+            this.players.removeDeadPlayer(mafiaSelectPlayer);
+            return mafiaSelectPlayer.getUser().getNickname();
         }
         return "";
     }

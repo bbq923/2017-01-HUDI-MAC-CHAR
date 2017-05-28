@@ -15,6 +15,4 @@ public class InvestMessage {
     public void setTheVoted(String theVoted) {
         this.theVoted = theVoted;
     }
-    
-    
 }
