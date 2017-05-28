@@ -50,6 +50,7 @@ export default class nightTime {
         	this.voteSocket.sendVoteResult(this.userName, victim, "night");
         }
         if (this.role === "Police") {
+        	this.voteSocket.sendVoteResult(this.userName, victim, "night");
         	this.investSocket.sendInvest(victim);
         }
         this.slot_box.removeEventListener("click", this.voteFunction);
