@@ -25,7 +25,7 @@ public class VoteManager {
         Player playerVoting = this.players.getPlayer(voteMessage.getUserName());
         Player playerVoted = this.players.getPlayer(voteMessage.getTheVoted());
         
-        if (playerVoting == null || playerVoted == null) {
+        if (playerVoting == null) {
         	return false;
         }
         
