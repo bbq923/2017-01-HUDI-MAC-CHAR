@@ -134,6 +134,8 @@ public class VoteManager {
             if (entry.getValue() > base) {
                 selectedPlayer = entry.getKey();
                 base = entry.getValue();
+            } else if (base == entry.getValue()) {
+                selectedPlayer = null;
             }
         }
         log.debug("determineResultOfDay:resultSelectedPlayer: {}", selectedPlayer);
@@ -155,6 +157,8 @@ public class VoteManager {
             if (entry.getValue() > base) {
                 mafiaSelectPlayer = entry.getKey();
                 base = entry.getValue();
+            } else if (base == entry.getValue()) {
+                mafiaSelectPlayer = null;
             }
         }
         base = 0;

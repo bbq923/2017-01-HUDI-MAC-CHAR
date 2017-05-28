@@ -31,7 +31,9 @@ public class GamePlayers {
     }
 
     public String findRoleName(String userNickName) {
+        log.debug("user nickname : {}", userNickName);
         for (Player player : this.players) {
+            log.debug("player in game nickname : {}", player);
             if (player.isSameNickName(userNickName)) {
                 return player.getRoleName();
             }
