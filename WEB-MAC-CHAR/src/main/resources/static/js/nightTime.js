@@ -10,7 +10,7 @@ export default class nightTime {
         this.investSocket = investSocket;
 
         this.voted = null;
-        this.NIGHT_TIME = 5;
+        this.NIGHT_TIME = 30;
         this.nightTime = this;
         this.voteFunction = this.nightTimeVote.bind(this);
     }

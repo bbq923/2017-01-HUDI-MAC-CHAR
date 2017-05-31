@@ -30,15 +30,15 @@ public class VoteManager {
 
         voteStatus.put(playerVoting, playerVoted);
         //TODO Below code is TEST CODE, DELETE or COMMENT this code before commit.
-        if (this.players.getPlayer("testUser1") != null) {
-            this.voteStatus.put(this.players.getPlayer("testUser1"), this.players.getPlayer("testUser1"));
-        }
-        if (this.players.getPlayer("testUser2") != null) {
-            this.voteStatus.put(this.players.getPlayer("testUser2"), this.players.getPlayer("testUser2"));
-        }
-        if (this.players.getPlayer("testUser3") != null) {
-            this.voteStatus.put(this.players.getPlayer("testUser3"), this.players.getPlayer("testUser3"));
-        }
+//        if (this.players.getPlayer("testUser1") != null) {
+//            this.voteStatus.put(this.players.getPlayer("testUser1"), this.players.getPlayer("testUser1"));
+//        }
+//        if (this.players.getPlayer("testUser2") != null) {
+//            this.voteStatus.put(this.players.getPlayer("testUser2"), this.players.getPlayer("testUser2"));
+//        }
+//        if (this.players.getPlayer("testUser3") != null) {
+//            this.voteStatus.put(this.players.getPlayer("testUser3"), this.players.getPlayer("testUser3"));
+//        }
 //        if (this.players.getPlayer("testUser4") != null) {
 //            this.voteStatus.put(this.players.getPlayer("testUser4"), this.players.getPlayer("testUser4"));
 //        }
