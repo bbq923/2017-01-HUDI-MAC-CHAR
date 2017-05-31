@@ -9,7 +9,7 @@ export default class dayTime {
         this.voteSocket = voteSocket;
 
         this.voted = null;
-        this.DAY_TIME = 60;
+        this.DAY_TIME = 5;
         this.dayTime = this;
         this.voteFunction = this.dayTimeVote.bind(this);
     }
@@ -40,6 +40,10 @@ export default class dayTime {
         Array.from(document.getElementsByClassName("dead")).forEach(slot => {
             if (slot.getAttribute("data-id") === this.userName) {
                 this.voted.getElementsByClassName("player_status")[0].textContent = "";
+                this.voted = null;
+            }
+            if (slot.getElementsByClassName("player_status")[0].textContent !== "") { //죽은 player에 투표한 경우
+                slot.getElementsByClassName("player_status")[0].textContent = "";
                 this.voted = null;
             }
         });

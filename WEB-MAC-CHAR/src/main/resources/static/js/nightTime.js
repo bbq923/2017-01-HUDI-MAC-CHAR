@@ -10,7 +10,7 @@ export default class nightTime {
         this.investSocket = investSocket;
 
         this.voted = null;
-        this.NIGHT_TIME = 30;
+        this.NIGHT_TIME = 5;
         this.nightTime = this;
         this.voteFunction = this.nightTimeVote.bind(this);
     }
@@ -37,6 +37,17 @@ export default class nightTime {
             target.parentElement.getElementsByClassName("player_status")[0].textContent = "VOTED";
             this.voted = target.parentElement;
         }
+        
+        Array.from(document.getElementsByClassName("dead")).forEach(slot => {
+            if (slot.getAttribute("data-id") === this.userName) {
+                this.voted.getElementsByClassName("player_status")[0].textContent = "";
+                this.voted = null;
+            }
+            if (slot.getElementsByClassName("player_status")[0].textContent !== "") { //죽은 player에 투표한 경우
+                slot.getElementsByClassName("player_status")[0].textContent = "";
+                this.voted = null;
+            }
+        });
     }
 
     nightTimerStart() {
