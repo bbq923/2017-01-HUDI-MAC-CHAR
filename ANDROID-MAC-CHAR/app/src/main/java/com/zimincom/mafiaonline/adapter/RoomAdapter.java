@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.zimincom.mafiaonline.GameRoomActivity;
+import com.zimincom.mafiaonline.activity.GameRoomActivity;
 import com.zimincom.mafiaonline.R;
 import com.zimincom.mafiaonline.item.Room;
 import com.zimincom.mafiaonline.item.User;
@@ -74,6 +74,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
             roomId = (TextView) itemView.findViewById(R.id.room_id);
             roomTitle = (TextView) itemView.findViewById(R.id.room_title);
             playerCount = (TextView) itemView.findViewById(R.id.current_player);
+
         }
     }
 }

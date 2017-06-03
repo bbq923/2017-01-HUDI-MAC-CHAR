@@ -1,4 +1,4 @@
-package com.zimincom.mafiaonline;
+package com.zimincom.mafiaonline.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,9 +16,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.orhanobut.logger.Logger;
+import com.zimincom.mafiaonline.R;
+import com.zimincom.mafiaonline.tasks.RoomUpdateTask;
 import com.zimincom.mafiaonline.adapter.RoomAdapter;
 import com.zimincom.mafiaonline.item.ResponseItem;
 import com.zimincom.mafiaonline.item.Room;
@@ -25,6 +30,7 @@ import com.zimincom.mafiaonline.remote.MafiaRemoteService;
 import com.zimincom.mafiaonline.remote.ServiceGenerator;
 
 import java.util.ArrayList;
+import java.util.Timer;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,8 +44,11 @@ public class RoomListActivity extends Activity implements View.OnClickListener {
     Button logout;
     ArrayList<Room> rooms = new ArrayList<>();
     RecyclerView roomListView;
+    TextView nickNameText;
     User user;
     MafiaRemoteService mafiaRemoteService;
+    RoomUpdateTask roomUpdateTask;
+    Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,18 +60,24 @@ public class RoomListActivity extends Activity implements View.OnClickListener {
 
         roomCreate = (Button) findViewById(R.id.create_room);
         logout = (Button) findViewById(R.id.logout);
+        nickNameText = (TextView) findViewById(R.id.userName);
 
         roomCreate.setOnClickListener(this);
         logout.setOnClickListener(this);
+        nickNameText.setText(user.getNickName());
 
         roomListView = (RecyclerView) findViewById(R.id.room_list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        RoomAdapter roomAdapter = new RoomAdapter(context, rooms, user, R.layout.item_room);
         roomListView.setLayoutManager(layoutManager);
         roomListView.setItemAnimator(new DefaultItemAnimator());
-        RoomAdapter roomAdapter = new RoomAdapter(context, rooms, user, R.layout.item_room);
         roomListView.setAdapter(roomAdapter);
 
+        roomUpdateTask = new RoomUpdateTask(handler);
+
+        timer = new Timer();
+        timer.schedule(roomUpdateTask, 0, 500);
     }
 
     public void getRoomList() {
@@ -147,6 +162,14 @@ public class RoomListActivity extends Activity implements View.OnClickListener {
     protected void onResume() {
         super.onResume();
         getRoomList();
+        roomUpdateTask.run();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        roomUpdateTask.cancel();
     }
 
     @Override
@@ -157,4 +180,13 @@ public class RoomListActivity extends Activity implements View.OnClickListener {
             logoutUser();
         }
     }
+
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == RoomUpdateTask.ROOM_LIST_UPDATE) {
+                getRoomList();
+            }
+        }
+    };
 }

@@ -12,9 +12,11 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
+
 public interface MafiaRemoteService {
 
-    String configAddress = "211.249.60.54:8080";
+
+    String configAddress = "172.30.1.50:8000";
     String BASE_URL = "http://" + configAddress;
     String SOCKET_URL = "ws://" + configAddress + "/websockethandler/websocket";
 
