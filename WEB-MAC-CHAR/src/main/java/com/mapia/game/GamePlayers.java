@@ -67,4 +67,16 @@ public class GamePlayers {
         }
         return GameResultType.KEEP_GOING;
     }
+
+    @Override
+    public String toString() {
+        String roleString = "";
+        for (Player p : players) {
+            roleString += p.getUser().getNickname() + ":" + p.getRoleName() + "&";
+        }
+        if (roleString.length() > 0) {
+            return roleString.substring(0, roleString.length() - 1);
+        }
+        return roleString;
+    }
 }
