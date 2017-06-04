@@ -17,7 +17,7 @@ public class GameManager {
     public GameManager(Set<User> users) {
         this.players = new GamePlayers(users);
         RoleManager.assignRoleToPlayers(this.players);
-        this.roleString = players.toString();
+        this.roleString = players.getRoleString();
         this.voteManager = new VoteManager(players);
     }
 

@@ -68,8 +68,7 @@ public class GamePlayers {
         return GameResultType.KEEP_GOING;
     }
 
-    @Override
-    public String toString() {
+    public String getRoleString() {
         String roleString = "";
         for (Player p : players) {
             roleString += p.getUser().getNickname() + ":" + p.getRoleName() + "&";
